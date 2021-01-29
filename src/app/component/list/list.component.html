@@ -1,0 +1,42 @@
+<h2>Nimekiri</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th (click)="sort('firstname')">eesnimi <i [class]="firstnameClass"></i></th>
+    <th (click)="sort('surname')">perekonnanimi <i [class]="surnameClass"></i></th>
+    <th (click)="sort('sex')">sugu <i [class]="sexClass"></i></th>
+    <th (click)="sort('dob')">sünnikuupäev <i [class]="dobClass"></i></th>
+    <th (click)="sort('phone')">telefon <i [class]="phoneClass"></i></th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let item of ppl | slice:start:end">
+    <tr (click)="click(item)" [class]="item.isOpen ? 'clickable active' : 'clickable'">
+      <td>{{item.firstname}}</td>
+      <td>{{item.surname}}</td>
+      <td>{{item.sex === 'f' ? 'Naine' : 'Mees'}}</td>
+      <td>{{item.dob}}</td>
+      <td>{{item.phone}}</td>
+    </tr>
+    <tr *ngIf="item.isOpen">
+      <td [attr.aria-expanded]="item.isOpen" colspan="10">
+        <div class="person_info">
+          <div class="image">
+            <img [src]="item.images[0].small" [alt]="item.images[0].alt">
+          </div>
+          <div class="content" [innerHTML]="item.intro.slice(0, 288) + '...'"></div>
+        </div>
+      </td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
+
+<div class="navigation">
+  <button (click)="movePageBack()" class="btn fas fa-chevron-left"></button>
+  <ng-container *ngFor="let p of pages | slice:startPage:endPage">
+    <a (click)="setPage(p)" [class]="p === page ? 'a-active' : 'a-non'">{{p}}</a>
+  </ng-container>
+  <button (click)="movePageForward()" class="btn fas fa-chevron-right"></button>
+</div>

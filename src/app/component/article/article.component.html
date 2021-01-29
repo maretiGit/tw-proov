@@ -1,0 +1,10 @@
+<article>
+  <h2>{{article.title}}</h2>
+  <div class="intro" [innerHTML]="article.intro"></div>
+  <div class="image" *ngIf="article?.images?.length">
+    <div class="image__wrapper"><img [src]="article?.images[0]?.medium" [alt]="article?.images[0]?.alt"></div>
+  </div>
+  <div [innerHTML]="article.body"></div>
+  <tw-tag *ngFor="let tag of article.tags" [tag]="tag"></tw-tag>
+</article>
+
