@@ -1,5 +1,7 @@
 <h2>Nimekiri</h2>
 
+<div *ngIf="!ppl?.length" class="error">Nimekiri pole kättesaadav!</div>
+
 <table>
   <thead>
   <tr>
@@ -10,7 +12,8 @@
     <th (click)="sort('phone')">telefon <i [class]="phoneClass"></i></th>
   </tr>
   </thead>
-  <tbody>
+
+  <tbody *ngIf="ppl?.length">
   <ng-container *ngFor="let item of ppl | slice:start:end">
     <tr (click)="click(item)" [class]="item.isOpen ? 'clickable active' : 'clickable'">
       <td>{{item.firstname}}</td>

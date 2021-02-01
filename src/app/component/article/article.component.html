@@ -1,4 +1,4 @@
-<article>
+<article *ngIf="article">
   <h2>{{article.title}}</h2>
   <div class="intro" [innerHTML]="article.intro"></div>
   <div class="image" *ngIf="article?.images?.length">
@@ -8,3 +8,6 @@
   <tw-tag *ngFor="let tag of article.tags" [tag]="tag"></tw-tag>
 </article>
 
+<article *ngIf="!article">
+  <h2 class="error">Artikkel pole kättesaadav</h2>
+</article>

@@ -2,8 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'tw-tag',
-  templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.css']
+  templateUrl: './tag.component.html'
 })
 export class TagComponent implements OnInit {
 

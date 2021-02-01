@@ -4,12 +4,11 @@ import {Article} from '../../model/article.model';
 
 @Component({
   selector: 'tw-article',
-  templateUrl: './article.component.html',
-  styleUrls: ['./article.component.css']
+  templateUrl: './article.component.html'
 })
 export class ArticleComponent implements OnInit {
 
-  article: Article = new Article();
+  article: Article;
 
   constructor(private apiService: ApiService) {
   }
