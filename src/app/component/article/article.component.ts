@@ -21,6 +21,10 @@ export class ArticleComponent implements OnInit {
     this.apiService.getArticle()
       .subscribe(value => {
         this.article = value;
+      }, error => {
+        this.apiService.getLocalArticle()
+          .subscribe(value1 => {
+            this.article = value1; });
       });
   }
 }

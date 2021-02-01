@@ -42,6 +42,14 @@ export class ListComponent implements OnInit {
           p.dob = this.getDate(p.personal_code);
           return p;
         });
+      }, error => {
+        this.apiService.getLocalList()
+          .subscribe(value => {
+            this.ppl = value.list.map(p => {
+              p.dob = this.getDate(p.personal_code);
+              return p;
+            });
+          });
       });
   }
 

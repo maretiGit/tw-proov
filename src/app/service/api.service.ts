@@ -9,6 +9,10 @@ import {environment} from '../../environments/environment';
 export class ApiService {
 
   readonly baseUrl = environment.apiUrl;
+  // tslint:disable-next-line:variable-name
+  private _articleJsonURL = 'assets/jsons/article.json';
+  // tslint:disable-next-line:variable-name
+  private _listJsonURL = 'assets/jsons/list.json';
 
   constructor(private http: HttpClient) {
   }
@@ -19,6 +23,14 @@ export class ApiService {
 
   getArticle(): Observable<Article> {
     return this.http.get<Article>(this.baseUrl + 'article.json');
+  }
+
+  getLocalList(): Observable<List> {
+    return this.http.get<List>(this._listJsonURL);
+  }
+
+  getLocalArticle(): Observable<Article> {
+    return this.http.get<Article>(this._articleJsonURL);
   }
 }
 
